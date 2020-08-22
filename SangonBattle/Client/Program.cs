@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SangonBattle.Client.Helpers;
 
 namespace SangonBattle.Client
 {
@@ -18,6 +19,8 @@ namespace SangonBattle.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped<IHttpService, HttpService>();
+            builder.Services.AddScoped(typeof(SurveyRepository));
 
             await builder.Build().RunAsync();
         }

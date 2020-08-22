@@ -1,0 +1,65 @@
+﻿@page "/survey"
+@inject SurveyRepository _serveyRepository
+@inject NavigationManager _navigationManager
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <h3>Survey-묻는말에 답하시오</h3>
+
+        @foreach (var question in _questions)
+        {
+            <div class="col-12">
+
+                <SurveyQuestion Question="question" OnAnswered="OnAnswered" />
+                <br />
+            </div>
+        }
+
+        <button type="button" class="btn btn-info" @onclick="Submit">완료</button>
+
+    </div>
+</div>
+
+
+@code {
+    private List<Question> _questions = new List<Question>();
+    private Dictionary<int, Submission> _submissions = new Dictionary<int, Submission>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        _questions = await _serveyRepository.GetQuestions();
+    }
+
+    private void OnAnswered(Submission submission)
+    {
+        if (_submissions.ContainsKey(submission.QuestionId))
+        {
+            _submissions[submission.QuestionId] = submission;
+        }
+        else
+        {
+            _submissions.Add(submission.QuestionId, submission);
+        }
+    }
+
+    private async Task Submit()
+    {
+        if (_submissions.Count != _questions.Count)
+        {
+            Console.WriteLine("Not enough");
+
+            return;
+        }
+
+        foreach (var key in _submissions.Keys)
+        {
+            Console.WriteLine($"{key} : {_submissions[key].Point}");
+        }
+
+        int resultId = await _serveyRepository.Submit(_submissions.Values.ToList());
+
+        _navigationManager.NavigateTo($"/result/{resultId}");
+    }
+}

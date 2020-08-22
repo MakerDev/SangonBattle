@@ -1,34 +1,57 @@
-﻿<h3>SurveyQuestion</h3>
-
-<p>@Question.Content</p>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-danger">
-                    <input type="radio" name="jb-radio" id="jb-radio-1"> -2
-                </label>
-                <label class="btn btn-danger">
-                    <input type="radio" name="jb-radio" id="jb-radio-2"> -1
-                </label>
-                <label class="btn btn-danger">
-                    <input type="radio" name="jb-radio" id="jb-radio-3"> 0
-                </label>
-                <label class="btn btn-danger">
-                    <input type="radio" name="jb-radio" id="jb-radio-3"> 1
-                </label>
-                <label class="btn btn-danger">
-                    <input type="radio" name="jb-radio" id="jb-radio-3"> 2
-                </label>
-            </div>
+﻿<EditForm Model="_submission">
+    <div class="row justify-content-center">
+            <p>@Question.Content</p>
+    </div>
+    <div class="row justify-content-center">
+        <div class="btn-group btn-group-toggle px-0" data-toggle="buttons">
+            <MatRadioGroup @bind-Value="SelectedValue" TValue="int">
+                @for (int i = -3; i <= 3; i++)
+                {
+                    <MatRadioButton Value="@i" TValue="int" />
+                }
+            </MatRadioGroup>
         </div>
     </div>
-</div>
+</EditForm>
+
 
 
 
 @code {
-    [Parameter] public Question Question { get; set; }
-    [Parameter] public EventCallback<int> OnAnswered { get; set; }
+    [Parameter] public Question Question { get; set; } = new Question();
+    [Parameter] public EventCallback<Submission> OnAnswered { get; set; }
 
+    private string radioGroupName => $"Question{Question.Id}";
+    private Submission _submission = new Submission();
+    private bool _valueSelected = false;
+
+
+    public int SelectedValue
+    {
+        get
+        {
+            if (!_valueSelected)
+                return -5;
+
+            return _submission.Point;
+        }
+        set
+        {
+            _submission.Point = value;
+            _valueSelected = true;
+            OnValueSet();
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        _submission.QuestionId = Question.Id;
+        _submission.Category = Question.Category;
+    }
+
+    private async Task OnValueSet()
+    {
+        //_submission.Point = value;
+        await OnAnswered.InvokeAsync(_submission);
+    }
 }
