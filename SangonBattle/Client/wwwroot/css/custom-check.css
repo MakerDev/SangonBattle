@@ -1,16 +1,16 @@
-﻿.custom-checks {
+﻿:root {
+    --agree-bg-color: #6bb698;
+    --disagree-bg-color: #5b3449;
+    --normal-bg-color: #808080;
+}
+
+
+.custom-checks {
     position: relative;
 }
 
 .custom-checks input[type="radio"] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
+    visibility:hidden;
 }
 
 .custom-checks input[type="radio"] + label {
@@ -23,31 +23,31 @@
     -ms-user-select: none;
 }
 
-    .custom-checks input[type="radio"] + label.radio-agree:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 21px;
-        height: 21px;
-        text-align: center;
-        background: #fafafa;
-        border: 3px solid #6bb698;
-        border-radius: 100%;
-        box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-    }
+.custom-checks input[type="radio"] + label.radio-agree:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 21px;
+    height: 21px;
+    text-align: center;
+    background: #fafafa;
+    border: 3px solid var(--agree-bg-color);
+    border-radius: 100%;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+}
 
-    .custom-checks input[type="radio"] + label.radio-disagree:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 21px;
-        height: 21px;
-        text-align: center;
-        background: #fafafa;
-        border: 3px solid #5b3449;
-        border-radius: 100%;
-        box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-    }
+.custom-checks input[type="radio"] + label.radio-disagree:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 21px;
+    height: 21px;
+    text-align: center;
+    background: #fafafa;
+    border: 3px solid var(--disagree-bg-color);
+    border-radius: 100%;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+}
 
 .custom-checks input[type="radio"] + label.radio-normal:before {
     content: '';
@@ -57,7 +57,7 @@
     height: 21px;
     text-align: center;
     background: #fafafa;
-    border: 3px solid #808080;
+    border: 3px solid var(--normal-bg-color);
     border-radius: 100%;
     box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
 }
@@ -67,23 +67,24 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
 }
 
-    .custom-checks input[type="radio"]:checked + label.radio-agree:before {
-        background: #6bb698;
-    }
-
-.custom-checks input[type="radio"]:checked + label.radio-normal:before {
-    background: #808080;
+.custom-checks input[type="radio"]:checked + label.radio-agree:before {
+    background: var(--agree-bg-color);
 }
 
-    .custom-checks input[type="radio"]:checked + label.radio-disagree:before {
-        background: #5b3449;
-    }
+.custom-checks input[type="radio"]:checked + label.radio-normal:before {
+    background: var(--normal-bg-color);
+}
 
-    .custom-checks input[type="radio"] + label.sz3:before {
-        width: 32px;
-        height: 32px;
-        margin-top: 0px;
-    }
+.custom-checks input[type="radio"]:checked + label.radio-disagree:before {
+    background: var(--disagree-bg-color);
+}
+
+.custom-checks input[type="radio"] + label.sz3:before {
+    width: 32px;
+    height: 32px;
+    margin-top: 0px;
+}
+
 .custom-checks input[type="radio"] + label.sz2:before {
     width: 28px;
     height: 28px;

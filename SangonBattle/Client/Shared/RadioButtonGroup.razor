@@ -1,11 +1,10 @@
-﻿<div class="custom-checks justify-content-center row align-items-center" style="margin-left:2px; margin-right:2px; padding-bottom:50px;">
-    <RadioInput GroupName="@_groupName" Value="-3" OnChange="UpdateValue" />
-    <RadioInput GroupName="@_groupName" Value="-2" OnChange="UpdateValue" />
-    <RadioInput GroupName="@_groupName" Value="-1" OnChange="UpdateValue" />
-    <RadioInput GroupName="@_groupName" Value="0" OnChange="UpdateValue" />
-    <RadioInput GroupName="@_groupName" Value="1" OnChange="UpdateValue" />
-    <RadioInput GroupName="@_groupName" Value="2" OnChange="UpdateValue" />
-    <RadioInput GroupName="@_groupName" Value="3" OnChange="UpdateValue" />
+﻿<div class="d-flex custom-checks justify-content-center align-items-center" style="margin-left:16px; margin-right:2px; padding-bottom:50px;">
+    @for (int i = -3; i <= 3; i++)
+    {
+        <div style="width:50px; height:50px; ">
+            <RadioInput GroupName="@_groupName" Value="@i" OnChange="UpdateValue" />
+        </div>
+    }
 </div>
 
 @code {

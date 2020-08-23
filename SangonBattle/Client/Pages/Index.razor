@@ -1,12 +1,15 @@
 ﻿@page "/"
+@inject IJSRuntime _jsRunTime
 @inject NavigationManager _navigationManager
 
 <div class="container">
-    <div class="row justify-content-center text-center">
-        <h1><strong>2020 GONGSANGJEON</strong></h1>
+    <div class="d-flex justify-content-between text-center ">
+        <img class="col-2" src="images/yonsei-emblem.png" style="padding:0px; width:100%; height:100%;" />
+        <h4 class="align-self-center pb-3"><strong>2020 GONGSANGJEON</strong></h4>
+        <img class="col-2" src="images/yonsei-emblem.png" style="visibility:hidden;" />
     </div>
 
-    <div class="mt-1 row justify-content-center text-center">
+    <div class="mt-4 row justify-content-center text-center">
         <p>
             2020 공상전이 분석한 당신의 성격유형은?<br />
             당신의 성격 유형과 어울리는 공상전 프로그램부터<br />
@@ -18,8 +21,8 @@
         <ProgramListCarousel />
     </div>
 
-    <div class="mt-4 row justify-content-center">
-        <button type="button" @onclick="Start" style="background-color:black; border-width:0px;">
+    <div class="my-4 row justify-content-center">
+        <button type="button" @onclick="Start" style="background-color:black; border-width:0px; margin-right:20px;">
             <img class="start-btn" src="images/startbtn.png" alt="start" />
         </button>
     </div>
@@ -30,5 +33,10 @@
     private void Start()
     {
         _navigationManager.NavigateTo("/survey");
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await _jsRunTime.InvokeAsync<object>("initializeCarousel");
     }
 }
