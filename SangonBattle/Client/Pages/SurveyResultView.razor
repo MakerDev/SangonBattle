@@ -11,6 +11,20 @@
 <p>@_surveyResult.CategoryCaption</p>
 <p>@_surveyResult.CharacterCaption</p>
 
+<br />
+<p>추천 게임 : </p>
+@foreach (var game in _surveyResult.GameSuggestions)
+{
+    <p>@game</p>
+}
+
+<br />
+<p>추천 동아리 : </p>
+@foreach (var club in _surveyResult.ClubSuggestions)
+{
+    <p>@club</p>
+}
+
 <button type="button" class="btn badge-primary" @onclick="Restart"> 다시하기 </button>
 
 @code {

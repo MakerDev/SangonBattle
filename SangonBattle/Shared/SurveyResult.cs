@@ -13,7 +13,7 @@ namespace SangonBattle.Shared
         public string CharacterCaption { get; set; }
         public CategoryType CategoryType { get; set; }
         public string CategoryCaption { get; set; }
-        public List<string> GameSuggestions { get; set; }
-        public List<string> ClubSuggestions { get; set; }
+        public List<string> GameSuggestions { get; set; } = new List<string>();
+        public List<string> ClubSuggestions { get; set; } = new List<string>();
     }
 }

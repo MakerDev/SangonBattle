@@ -1,0 +1,15 @@
+﻿@font-face {
+    font-family: oldphoto1;
+    src: url(../fonts/a옛날사진관1.ttf);
+    src: url(../fonts/a옛날사진관1.woff) format('woff'),url(../fonts/a옛날사진관1.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: oldphoto2;
+    src: url(../fonts/a옛날사진관2.ttf);
+    src: url(../fonts/a옛날사진관2.woff) format('woff'),url(../fonts/a옛날사진관2.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal
+}

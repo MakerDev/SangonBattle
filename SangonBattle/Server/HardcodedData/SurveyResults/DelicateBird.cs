@@ -15,7 +15,7 @@ namespace SangonBattle.Server.HardcodedData.SurveyResults
         public CategoryType CategoryType { get; set; } = CategoryType.Delicate;
         public string CategoryCaption { get; set; } = "섬세한 당신은 손을 다치지 않고 납땜을 할 수 있을 것입니다.";
         public CharacterType CharacterType { get; set; } = CharacterType.Bird;
-        public string CharacterCaption { get; set; } = "비둘기야 먹자 구구구999";
+        public string CharacterCaption { get; set; } = "비둘기야 먹자";
         public List<string> ClubSuggestions { get; set; } = new List<string>
         {
             "섬세한 NTIZ",

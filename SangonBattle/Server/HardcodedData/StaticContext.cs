@@ -24,6 +24,21 @@ namespace SangonBattle.Server.HardcodedData
             SurveyResults.Add(2, new DelicateBird());
         }
 
+        public ISurveyResult GetRandomResult()
+        {
+            Random random = new Random();
 
+            return SurveyResults[random.Next(0, SurveyResults.Count)];
+        }
+
+        public ISurveyResult GetResult(int id)
+        {
+            if (SurveyResults.ContainsKey(id))
+            {
+                return SurveyResults[id];
+            }
+
+            return null;
+        }
     }
 }

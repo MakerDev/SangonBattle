@@ -11,7 +11,7 @@ namespace SangonBattle.Server.HardcodedData.SurveyResults
     {
         public int Id { get; set; } = 0;
         public string Title { get; set; } = "감성적인 식빵";
-        public string Caption { get; set; } = "당신은 감성적인 식빵입니다. ㅋㅋ";
+        public string Caption { get; set; } = "당신은 감성적인 식빵입니다.";
         public CategoryType CategoryType { get; set; } = CategoryType.Emotional;
         public string CategoryCaption { get; set; } = "당신은 감성적이니까 미술을 전공하세요";
         public CharacterType CharacterType { get; set; } = CharacterType.Bread;

@@ -1,0 +1,53 @@
+﻿<input id="@_id" name="@GroupName" value="@Value" type="radio"
+       @onchange="(async (e) => await UpdateValue(int.Parse(e.Value.ToString())))" />
+<label class="@ClassFromValue()" for="@_id" />
+
+@code {
+    [Parameter] public string GroupName { get; set; }
+    [Parameter] public int Value { get; set; }
+    [Parameter] public EventCallback<int> OnChange { get; set; }
+
+    private string _id => GroupName + Value.ToString();
+
+    private string ClassFromValue()
+    {
+        string styleClass = "mx-1 ";
+
+        if (Value < 0)
+        {
+            styleClass += "radio-disagree ";
+        }
+        else if (Value > 0)
+        {
+            styleClass += "radio-agree ";
+        }
+        else
+        {
+            styleClass += "radio-normal ";
+        }
+
+        if (Value == -3 || Value == 3)
+        {
+            styleClass += "sz3 ";
+        }
+        else if (Value == -2 || Value == 2)
+        {
+            styleClass += "sz2 ";
+        }
+        else if (Value == -1 || Value == 1)
+        {
+            styleClass += "sz1 ";
+        }
+        else
+        {
+            styleClass += "sz0 ";
+        }
+
+        return styleClass;
+    }
+
+    private async Task UpdateValue(int newValue)
+    {
+        await OnChange.InvokeAsync(newValue);
+    }
+}

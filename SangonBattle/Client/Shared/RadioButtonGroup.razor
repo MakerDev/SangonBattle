@@ -1,0 +1,22 @@
+﻿<div class="custom-checks justify-content-center row align-items-center" style="margin-left:2px; margin-right:2px; padding-bottom:50px;">
+    <RadioInput GroupName="@_groupName" Value="-3" OnChange="UpdateValue" />
+    <RadioInput GroupName="@_groupName" Value="-2" OnChange="UpdateValue" />
+    <RadioInput GroupName="@_groupName" Value="-1" OnChange="UpdateValue" />
+    <RadioInput GroupName="@_groupName" Value="0" OnChange="UpdateValue" />
+    <RadioInput GroupName="@_groupName" Value="1" OnChange="UpdateValue" />
+    <RadioInput GroupName="@_groupName" Value="2" OnChange="UpdateValue" />
+    <RadioInput GroupName="@_groupName" Value="3" OnChange="UpdateValue" />
+</div>
+
+@code {
+    [Parameter] public int Value { get; set; }
+    [Parameter] public EventCallback<int> ValueChanged { get; set; }
+
+    private string _groupName = Guid.NewGuid().ToString();
+
+    private async Task UpdateValue(int newValue)
+    {
+        Value = newValue;
+        await ValueChanged.InvokeAsync(Value);
+    }
+}

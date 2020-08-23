@@ -1,0 +1,23 @@
+﻿.start-btn {
+    max-width: 200px;
+    width: 30vw;
+}
+
+
+.carousel-item img {
+    max-width: 400px;
+    max-height: 400px;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 10%;
+}
+
+.carousel-wrapper {
+    background-color: white;
+    border-radius: 10%;
+    border-width: 3px;
+    max-width: 400px;
+    max-height: 400px;
+    width: 60vw;
+    height: 60vw;
+}

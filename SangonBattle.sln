@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SangonBattle.Server", "SangonBattle\Server\SangonBattle.Server.csproj", "{82BAF8F6-EBD2-46A9-8FEE-2CFB4028419A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SangonBattle.Server", "SangonBattle\Server\SangonBattle.Server.csproj", "{82BAF8F6-EBD2-46A9-8FEE-2CFB4028419A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SangonBattle.Client", "SangonBattle\Client\SangonBattle.Client.csproj", "{EB4B3B4A-1FC1-40D3-B1E8-3A60F5B1FCE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SangonBattle.Client", "SangonBattle\Client\SangonBattle.Client.csproj", "{EB4B3B4A-1FC1-40D3-B1E8-3A60F5B1FCE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SangonBattle.Shared", "SangonBattle\Shared\SangonBattle.Shared.csproj", "{846A6177-B701-4924-BE94-1933D390C84B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SangonBattle.Shared", "SangonBattle\Shared\SangonBattle.Shared.csproj", "{846A6177-B701-4924-BE94-1933D390C84B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

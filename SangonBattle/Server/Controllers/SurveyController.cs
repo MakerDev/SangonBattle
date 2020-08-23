@@ -30,8 +30,15 @@ namespace SangonBattle.Server.Controllers
         [HttpGet("results/{id}")] 
         public ActionResult<ISurveyResult> GetResult(int id)
         {
-            return Ok(_staticContext.SurveyResults[id]);
+            //var result = _staticContext.GetResult(id);
+            var result = _staticContext.GetRandomResult();
 
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
         [HttpPost("submit")]
