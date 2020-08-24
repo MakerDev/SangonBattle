@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SangonBattle.Server.HardcodedData;
+using SangonBattle.Application.Survey;
 using SangonBattle.Shared;
 using SangonBattle.Shared.DTO;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SangonBattle.Server.Controllers
 {
@@ -14,24 +12,23 @@ namespace SangonBattle.Server.Controllers
     [ApiController]
     public class SurveyController : ControllerBase
     {
-        private readonly StaticContext _staticContext;
+        private readonly IMediator _mediator;
 
-        public SurveyController(StaticContext staticContext)
+        public SurveyController(IMediator mediator)
         {
-            _staticContext = staticContext;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public ActionResult<List<Question>> GetQuestions()
+        public async Task<ActionResult<List<Question>>> GetQuestions()
         {
-            return Ok(_staticContext.Questions);
+            return Ok(await _mediator.Send(new GetQuestions.Query()));
         }
 
-        [HttpGet("results/{id}")] 
-        public ActionResult<ISurveyResult> GetResult(int id)
+        [HttpGet("results/{id}")]
+        public async Task<ActionResult<ISurveyResult>> GetResult(int id)
         {
-            //var result = _staticContext.GetResult(id);
-            var result = _staticContext.GetRandomResult();
+            var result = await _mediator.Send(new GetResult.Query { ResultId = id });
 
             if (result == null)
             {
@@ -42,11 +39,11 @@ namespace SangonBattle.Server.Controllers
         }
 
         [HttpPost("submit")]
-        public ActionResult<int> Submit(List<Submission> submissions)
+        public async Task<ActionResult<int>> Submit(List<Submission> submissions)
         {
-            //TODO : loop through submissions and 
-            //ResultId
-            return Ok(1);
+            var resultId = await _mediator.Send(new Evaluate.Command { Submissions = submissions });
+
+            return Ok(resultId);
         }
     }
 }

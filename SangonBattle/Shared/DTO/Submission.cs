@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SangonBattle.Shared.DTO
+﻿namespace SangonBattle.Shared.DTO
 {
     public class Submission
     {

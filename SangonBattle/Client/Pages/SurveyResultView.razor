@@ -3,33 +3,40 @@
 @inject SurveyRepository _surveyRepository
 @inject NavigationManager _navigationManager
 
-<h3>SurveyResult - @ResultId</h3>
-
-<h3>Title : @_surveyResult.Title</h3>
-<h3>Caption : @_surveyResult.Caption</h3>
-
-<p>@_surveyResult.CategoryCaption</p>
-<p>@_surveyResult.CharacterCaption</p>
-
-<br />
-<p>추천 게임 : </p>
-@foreach (var game in _surveyResult.GameSuggestions)
+@if (_surveyResult == null)
 {
-    <p>@game</p>
+    <p>Loading...</p>
 }
-
-<br />
-<p>추천 동아리 : </p>
-@foreach (var club in _surveyResult.ClubSuggestions)
+else
 {
-    <p>@club</p>
+    <h3>SurveyResult - @ResultId</h3>
+
+    <h3>Title : @_surveyResult.Title</h3>
+    <h3>Caption : @_surveyResult.Caption</h3>
+
+    <p>@_surveyResult.CategoryCaption</p>
+    <p>@_surveyResult.CharacterCaption</p>
+
+    <br />
+    <p>추천 게임 : </p>
+    @foreach (var game in _surveyResult.GameSuggestions)
+    {
+        <p>@game</p>
+    }
+
+    <br />
+    <p>추천 동아리 : </p>
+    @foreach (var club in _surveyResult.ClubSuggestions)
+    {
+        <p>@club</p>
+    }
 }
 
 <button type="button" class="btn badge-primary" @onclick="Restart"> 다시하기 </button>
 
 @code {
     [Parameter] public int ResultId { get; set; }
-    private ISurveyResult _surveyResult = new SurveyResult();
+    private ISurveyResult _surveyResult = null;
 
     protected override async Task OnInitializedAsync()
     {

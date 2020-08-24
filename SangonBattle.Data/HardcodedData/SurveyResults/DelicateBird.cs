@@ -1,11 +1,7 @@
-﻿using SangonBattle.Client.Pages;
-using SangonBattle.Shared;
-using System;
+﻿using SangonBattle.Shared;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SangonBattle.Server.HardcodedData.SurveyResults
+namespace SangonBattle.Data.HardcodedData.SurveyResults
 {
     public class DelicateBird : ISurveyResult
     {

@@ -2,7 +2,6 @@
 using SangonBattle.Shared.DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SangonBattle.Client.Helpers
@@ -29,7 +28,7 @@ namespace SangonBattle.Client.Helpers
             throw new ApplicationException(await response.GetBodyAsync());
         }
 
-        public async Task<SurveyResult> GetResult(int id)
+        public async Task<ISurveyResult> GetResult(int id)
         {
             var response = await _httpService.GetAsync<SurveyResult>($"{_url}/results/{id}");
 

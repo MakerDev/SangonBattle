@@ -1,12 +1,11 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Linq;
-using SangonBattle.Server.HardcodedData;
+using SangonBattle.Application.Survey;
+using SangonBattle.Data.HardcodedData;
 
 namespace SangonBattle.Server
 {
@@ -24,7 +23,7 @@ namespace SangonBattle.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(typeof(StaticContext));
-
+            services.AddMediatR(typeof(Evaluate.Command).Assembly);
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
