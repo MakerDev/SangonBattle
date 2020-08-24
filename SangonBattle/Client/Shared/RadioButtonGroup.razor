@@ -1,9 +1,22 @@
-﻿<div class="d-flex custom-checks justify-content-center align-items-center" style="margin-left:16px; margin-right:2px; padding-bottom:50px;">
-    @for (int i = -3; i <= 3; i++)
+﻿<div class="d-flex custom-checks justify-content-center align-items-center" style="padding-bottom:50px;">
+    <div style="width:45px; height:45px; margin-left:5px;">
+        <RadioInput GroupName="@_groupName" Value="-3" OnChange="UpdateValue" />
+    </div>
+    <div style="width:45px; height:45px; margin-left:5px;">
+        <RadioInput GroupName="@_groupName" Value="-2" OnChange="UpdateValue" />
+    </div>    
+    <div style="width:45px; height:45px; margin-left:1px;">
+        <RadioInput GroupName="@_groupName" Value="-1" OnChange="UpdateValue" />
+    </div>    
+    <div style="width:45px; height:45px; margin-left:5px;">
+        <RadioInput GroupName="@_groupName" Value="0" OnChange="UpdateValue" />
+    </div>
+    @for (int i = 1; i <= 3; i++)
     {
-        <div style="width:50px; height:50px; ">
+        <div style="width:45px; height:45px; ">
             <RadioInput GroupName="@_groupName" Value="@i" OnChange="UpdateValue" />
         </div>
+
     }
 </div>
 

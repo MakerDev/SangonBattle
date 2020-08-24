@@ -6,7 +6,10 @@
 <div class="container">
     <div class="row justify-content-center text-center">
         <p>
-            <span class="h3">Survey-묻는말에 답하시오</span><br />
+            <span class="h3">
+                Survey<br />
+                <span class="h4">최대한 솔직하게 답변해주세요!</span>
+            </span><br /><br />
             No &lt;--------------------&gt; yes
         </p>
     </div>
@@ -17,7 +20,11 @@
     }
 
     <div class="mb-5 row justify-content-center">
-        <button type="button" class="btn btn-info" @onclick="Submit">완료</button>
+        <button type="button" class="btn btn-info"
+                disabled="@(!_allQuestionsAnswered)"
+                @onclick="Submit">
+            완료
+        </button>
     </div>
 </div>
 
@@ -25,7 +32,7 @@
 @code {
     private List<Question> _questions = new List<Question>();
     private Dictionary<int, Submission> _submissions = new Dictionary<int, Submission>();
-
+    private bool _allQuestionsAnswered = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -42,17 +49,15 @@
         {
             _submissions.Add(submission.QuestionId, submission);
         }
+
+        if (_submissions.Count == _questions.Count)
+        {
+            _allQuestionsAnswered = true;
+        }
     }
 
     private async Task Submit()
     {
-        if (_submissions.Count != _questions.Count)
-        {
-            Console.WriteLine("Not enough");
-
-            return;
-        }
-
         foreach (var key in _submissions.Keys)
         {
             Console.WriteLine($"{key} : {_submissions[key].Point}");

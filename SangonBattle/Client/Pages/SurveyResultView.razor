@@ -2,45 +2,62 @@
 
 @inject SurveyRepository _surveyRepository
 @inject NavigationManager _navigationManager
+<div class="container text-center">
 
-@if (_surveyResult == null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <h3>SurveyResult - @ResultId</h3>
-
-    <h3>Title : @_surveyResult.Title</h3>
-    <h3>Caption : @_surveyResult.Caption</h3>
-
-    <p>@_surveyResult.CategoryCaption</p>
-    <p>@_surveyResult.CharacterCaption</p>
-
-    <br />
-    <p>추천 게임 : </p>
-    @foreach (var game in _surveyResult.GameSuggestions)
+    @if (_surveyResult == null)
     {
-        <p>@game</p>
+        @if (_resultNotFound)
+        {
+            <h4>결과를 찾을 수 없어요 ㅠ...</h4>
+        }
+        else
+        {
+            <p>결과를 계산중입니다....</p>
+        }
     }
-
-    <br />
-    <p>추천 동아리 : </p>
-    @foreach (var club in _surveyResult.ClubSuggestions)
+    else
     {
-        <p>@club</p>
-    }
-}
+        <h3>SurveyResult - @ResultId</h3>
 
-<button type="button" class="btn badge-primary" @onclick="Restart"> 다시하기 </button>
+        <h3>Title : @_surveyResult.Title</h3>
+        <h3>Caption : @_surveyResult.Caption</h3>
+
+        <p>@_surveyResult.CategoryCaption</p>
+        <p>@_surveyResult.CharacterCaption</p>
+
+        <br />
+        <p>추천 게임 : </p>
+        @foreach (var game in _surveyResult.GameSuggestions)
+        {
+            <p>@game</p>
+        }
+
+        <br />
+        <p>추천 동아리 : </p>
+        @foreach (var club in _surveyResult.ClubSuggestions)
+        {
+            <p>@club</p>
+        }
+
+        <button type="button" class="btn badge-primary" @onclick="Restart"> 다시하기 </button>
+    }
+</div>
+
 
 @code {
     [Parameter] public int ResultId { get; set; }
     private ISurveyResult _surveyResult = null;
+    private bool _resultNotFound = false;
 
     protected override async Task OnInitializedAsync()
     {
         _surveyResult = await _surveyRepository.GetResult(ResultId);
+
+        //In case of Not found
+        if (_surveyResult == null)
+        {
+            _resultNotFound = true;
+        }
     }
 
     private void Restart()

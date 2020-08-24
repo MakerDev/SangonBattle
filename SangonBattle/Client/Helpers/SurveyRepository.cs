@@ -36,6 +36,10 @@ namespace SangonBattle.Client.Helpers
             {
                 return response.Response;
             }
+            else if (response.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
 
             throw new ApplicationException(await response.GetBodyAsync());
         }
