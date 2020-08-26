@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>46177827-86ea-451d-8a4a-8b533364c9e2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,10 @@
     <ProjectReference Include="..\Client\SangonBattle.Client.csproj" />
     <ProjectReference Include="..\Shared\SangonBattle.Shared.csproj" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <!-- extends watching group to include *.razor files -->
+    <Watch Include="..\Client\**\*.razor" />
+  </ItemGroup>
 
 </Project>

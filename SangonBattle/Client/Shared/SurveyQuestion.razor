@@ -1,7 +1,6 @@
-﻿<div class="row justify-content-center">
-    <p>@Question.Content</p>
-</div>
-<div class="row justify-content-center align-items-center">
+﻿<p class="text-center">@Question.Content</p>
+
+<div class="d-flex justify-content-center custom-check-container" style="padding-left:5px;" >
     <RadioButtonGroup @bind-Value="SelectedValue" />
 </div>
 

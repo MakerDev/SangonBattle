@@ -1,6 +1,39 @@
 ﻿.start-btn {
-    max-width: 200px;
-    width: 30vw;
+    max-width: 150px;
+    width: 25vw;
+}
+
+.main-logo {
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.h2 {
+    font-size: 8vw;
+}
+
+.h4 {
+    font-size: 4vw;
+}
+
+h2 {
+    font-size: 8vw;
+}
+
+h4 {
+    font-size: 4vw;
+}
+
+
+body {
+    font-size: 3.5vw;
+}
+
+@media screen and (min-width: 1600px) {
+    body {
+        font-size: 30px;
+    }
 }
 
 
