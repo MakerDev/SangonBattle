@@ -2,9 +2,9 @@
 {
     public enum CategoryType
     {
-        Emotional,
-        Rational,
-        Delicate,
-        Active,
+        TypeM,
+        TypeB,
+        TypeT,
+        TypeI,
     }
 }

@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,5 +22,16 @@
     <!-- extends watching group to include *.razor files -->
     <Watch Include="..\Client\**\*.razor" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="bears.csv" />
+    <None Remove="clubs.csv" />
+    <None Remove="programs.csv" />
+    <None Remove="surveyresults.csv" />
+  </ItemGroup>
+  
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /Y &quot;$(OutDir)\CSVDatas\*.csv&quot; &quot;$(ProjectDir)&quot;" />
+  </Target>
 
 </Project>

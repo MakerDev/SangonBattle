@@ -5,13 +5,12 @@ namespace SangonBattle.Shared
     public class SurveyResult : ISurveyResult
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Caption { get; set; }
-        public CharacterType CharacterType { get; set; }
-        public string CharacterCaption { get; set; }
-        public CategoryType CategoryType { get; set; }
-        public string CategoryCaption { get; set; }
-        public List<string> GameSuggestions { get; set; } = new List<string>();
-        public List<string> ClubSuggestions { get; set; } = new List<string>();
+        public MbtiResult MbtiResult { get; set; }
+        public List<MbtiResult> MbtiPartners { get; set; } = new List<MbtiResult>();
+        public Bear SuggestedBear { get; set; }
+        public string BearDescription { get; set; }
+        public BattleProgram SuggestedProgram { get; set; }
+        public List<Club> SuggestedClubs { get; set; } = new List<Club>();
+        public string ClubDesription { get; set; }
     }
 }

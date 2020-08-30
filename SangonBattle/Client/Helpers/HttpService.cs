@@ -1,6 +1,8 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SangonBattle.Client.Helpers
@@ -8,15 +10,18 @@ namespace SangonBattle.Client.Helpers
     public class HttpService : IHttpService
     {
         private readonly HttpClient _httpClient;
-        private JsonSerializerOptions _defaultJsonOptions =>
-            new JsonSerializerOptions()
-            {
-                PropertyNameCaseInsensitive = true,
-            };
+        private JsonSerializerOptions _defaultJsonOptions;
 
         public HttpService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+
+            _defaultJsonOptions = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+
+            _defaultJsonOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
         }
 
         public async Task<HttpResponseWrapper<T>> GetAsync<T>(string url)

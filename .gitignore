@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/SangonBattle/Server/surveyresults.csv
+/SangonBattle/Server/programs.csv
+/SangonBattle/Server/clubs.csv
+/SangonBattle/Server/bears.csv

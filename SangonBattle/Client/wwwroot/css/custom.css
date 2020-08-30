@@ -30,6 +30,7 @@ body {
     font-size: 3.5vw;
 }
 
+
 @media screen and (min-width: 1600px) {
     body {
         font-size: 30px;
@@ -42,15 +43,22 @@ body {
     max-height: 400px;
     width: 60vw;
     height: 60vw;
-    border-radius: 10%;
 }
 
 .carousel-wrapper {
     background-color: white;
     border-radius: 10%;
-    border-width: 3px;
     max-width: 400px;
     max-height: 400px;
     width: 60vw;
     height: 60vw;
+}
+
+.carousel, .slide,
+.carousel .carousel-inner,
+.carousel .carousel-item,
+.carousel .carousel-item img,
+.carousel .carousel-control {
+    border-radius: 10px;
+    overflow: hidden;
 }

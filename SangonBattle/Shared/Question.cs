@@ -1,6 +1,5 @@
 ﻿namespace SangonBattle.Shared
 {
-
     public class Question
     {
         public int Id { get; set; }

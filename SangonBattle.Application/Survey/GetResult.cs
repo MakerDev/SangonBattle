@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SangonBattle.Data.HardcodedData;
+using SangonBattle.Data;
 using SangonBattle.Shared;
 using System.Threading;
 using System.Threading.Tasks;

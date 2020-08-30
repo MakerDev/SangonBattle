@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SangonBattle.Client", "Sang
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SangonBattle.Shared", "SangonBattle\Shared\SangonBattle.Shared.csproj", "{846A6177-B701-4924-BE94-1933D390C84B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SangonBattle.Application", "SangonBattle.Application\SangonBattle.Application.csproj", "{DF3A81E4-FECE-4DCA-9D7A-EC90347DEE5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SangonBattle.Application", "SangonBattle.Application\SangonBattle.Application.csproj", "{DF3A81E4-FECE-4DCA-9D7A-EC90347DEE5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SangonBattle.Data", "SangonBattle.Data\SangonBattle.Data.csproj", "{2F7EE217-8356-4CB9-A6CC-4D7B59A71183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SangonBattle.Data", "SangonBattle.Data\SangonBattle.Data.csproj", "{2F7EE217-8356-4CB9-A6CC-4D7B59A71183}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -26,11 +26,7 @@
             styleClass += "radio-normal ";
         }
 
-        if (Value == -3 || Value == 3)
-        {
-            styleClass += "sz3 ";
-        }
-        else if (Value == -2 || Value == 2)
+        if (Value == -2 || Value == 2)
         {
             styleClass += "sz2 ";
         }
@@ -38,9 +34,13 @@
         {
             styleClass += "sz1 ";
         }
-        else
+        else if (Value == 0)
         {
             styleClass += "sz0 ";
+        }
+        else
+        {
+            styleClass += "sz3";
         }
 
         return styleClass;

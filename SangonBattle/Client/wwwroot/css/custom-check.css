@@ -63,30 +63,35 @@
     background: var(--disagree-bg-color);
 }
 
+
+.custom-check-container {
+    margin-right: 59px;
+}
+
 .custom-checks input[type="radio"] + label.sz3:before {
-    width: 40px;
-    height: 40px;
+    width: 78px;
+    height: 78px;
     margin-top: 0px;
 }
 
 .custom-checks input[type="radio"] + label.sz2:before {
-    width: 36px;
-    height: 36px;
-    margin-top: 2px;
+    width: 68.6px;
+    height: 68.6px;
+    margin-top: 4.7px;
 }
 .custom-checks input[type="radio"] + label.sz1:before {
-    width: 32px;
-    height: 32px;
-    margin-top: 4px;
+    width: 58.8px;
+    height: 58.8px;
+    margin-top: 9.6px;
 }
 
 .custom-checks input[type="radio"] + label.sz0:before {
-    width: 26px;
-    height: 26px;
-    margin-top: 7px;
+    width: 39.2px;
+    height: 39.2px;
+    margin-top: 19.4px;
 }
 
-@media (min-width: 450px) {
+@media (max-width: 980px) {
     .custom-check-container {
         margin-right: 6vw;
     }

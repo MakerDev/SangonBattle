@@ -17,29 +17,12 @@
     }
     else
     {
-        <h3>SurveyResult - @ResultId</h3>
+        <h3>당신과 어울리는 맥주는?!</h3>
 
-        <h3>Title : @_surveyResult.Title</h3>
-        <h3>Caption : @_surveyResult.Caption</h3>
-
-        <p>@_surveyResult.CategoryCaption</p>
-        <p>@_surveyResult.CharacterCaption</p>
-
-        <br />
-        <p>추천 게임 : </p>
-        @foreach (var game in _surveyResult.GameSuggestions)
-        {
-            <p>@game</p>
-        }
-
-        <br />
-        <p>추천 동아리 : </p>
-        @foreach (var club in _surveyResult.ClubSuggestions)
-        {
-            <p>@club</p>
-        }
-
-        <button type="button" class="btn badge-primary" @onclick="Restart"> 다시하기 </button>
+        <button type="button" class="btn btn-primary"
+                @onclick="Restart">
+            다시하기
+        </button>
     }
 </div>
 
@@ -52,6 +35,8 @@
     protected override async Task OnInitializedAsync()
     {
         _surveyResult = await _surveyRepository.GetResult(ResultId);
+
+        await Task.Delay(1000);
 
         //In case of Not found
         if (_surveyResult == null)

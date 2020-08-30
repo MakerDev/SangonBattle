@@ -3,12 +3,6 @@
 @inject NavigationManager _navigationManager
 
 <div class="container">
-    <div class="d-flex justify-content-between text-center ">
-        <img class="col-2 main-logo" src="images/netflix-logo.png" />
-        <h4 class="align-self-center pb-3"><strong>2020 GONGSANGJEON</strong></h4>
-        <img class="col-2 main-logo" src="images/netflix-logo.png" style="visibility:hidden;" />
-    </div>
-
     <div class="mt-4 row justify-content-center text-center">
         <p>
             2020 공상전이 분석한 당신의 성격유형은?<br />
@@ -18,7 +12,7 @@
     </div>
 
     <div class="mt-3 row justify-content-center">
-        <ProgramListCarousel />
+        <BooteStarpCarousel ContentPictures="_programPicturePaths" DisplayArrows="true" />
     </div>
 
     <div class="my-4 row justify-content-center">
@@ -30,6 +24,17 @@
 
 
 @code {
+    private List<string> _programPicturePaths = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        for (int i = 1; i <= 4; i++)
+        {
+            _programPicturePaths.Add("/images/programs/p" + i + ".png");
+        }
+
+    }
+
     private void Start()
     {
         _navigationManager.NavigateTo("/survey");

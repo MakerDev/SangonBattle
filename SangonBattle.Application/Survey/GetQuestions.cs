@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SangonBattle.Data.HardcodedData;
+using SangonBattle.Data;
 using SangonBattle.Shared;
 using System;
 using System.Collections.Generic;
