@@ -17,9 +17,55 @@
     }
     else
     {
-        <h3>당신과 어울리는 맥주는?!</h3>
+        <div>
+            <header class="font-weight-bold">당신과 어울리는 맥주는?!</header>
 
-        <button type="button" class="btn btn-primary"
+            <div class="row justify-content-center">
+                <BooteStarpCarousel ContentPictures="_bearPictures" DisplayArrows="true" />
+            </div>
+            <header class="mt-2 font-weight-bold" style="color: #BADA55;">
+                &lt;@(_surveyResult.SuggestedBear.Name)&gt;
+            </header>
+
+            <p class="mt-2">@(_surveyResult.BearDescription)</p>
+        </div>
+
+        <div class="mt-5">
+            <header class="mt-5"><strong>당신과 어울리는 공상전 프로그램은?!</strong></header>
+
+            <a class="align-self-center">
+                <img src="@($"/images/programs/p{_surveyResult.SuggestedProgram.Id}.png")" class="result-img" />
+            </a>
+        </div>
+
+        <div class="mt-5">
+            <header class="mt-5 mb-3"><strong>당신과 어울리는 연세대학교의 동아리는?!</strong></header>
+
+            @foreach (var club in _surveyResult.SuggestedClubs)
+            {
+                <a class="mb-3" href="@(club.SiteUrl)">
+                    <img src="@($"/images/clubs/{club.CategoryName}.png")" class="result-img" />
+                </a>
+            }
+            <p style="font-size: 5px">이미지를 클릭하면 소개페이지로 이동합니다.</p>
+
+            <p class="mt-2">
+                @(_surveyResult.ClubDesription)
+            </p>
+
+            <p class="my-2">
+                공과대학의 동아리가 궁금하다면?
+            </p>
+            <a class="btn btn-info" href="http://dongari.yonsei.ac.kr/sub/group_list.asp?d_type=2&dy_num=9">Click Here</a>
+
+            <p class="my-2">
+                상경경영대학의 동아리가 궁금하다면?
+            </p>
+            <a class="btn btn-info" href="http://dongari.yonsei.ac.kr/sub/group_list.asp?d_type=2&dy_num=14">Click Here</a>
+
+        </div>
+
+        <button type="button" class="btn btn-primary my-4"
                 @onclick="Restart">
             다시하기
         </button>
@@ -32,16 +78,27 @@
     private ISurveyResult _surveyResult = null;
     private bool _resultNotFound = false;
 
+    private List<string> _bearPictures = new List<string>();
+
+
     protected override async Task OnInitializedAsync()
     {
         _surveyResult = await _surveyRepository.GetResult(ResultId);
 
         await Task.Delay(1000);
 
-        //In case of Not found
         if (_surveyResult == null)
         {
             _resultNotFound = true;
+            return;
+        }
+
+        foreach (var bearPicture in _surveyResult.SuggestedBear.Pictures)
+        {
+            //TODO : optimize this
+            var bearName = _surveyResult.SuggestedBear.Name.Replace(" ", String.Empty);
+            var pictureName = bearPicture.Replace(" ", String.Empty);
+            _bearPictures.Add($"/images/bears/{bearName}/{pictureName}.png");
         }
     }
 

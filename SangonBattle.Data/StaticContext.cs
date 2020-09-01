@@ -33,7 +33,7 @@ namespace SangonBattle.Data
 
         public StaticContext()
         {
-            //TODO : Load questions with json
+            //TODO : Load questions with json or csv
             _questions = QuestionList.GetQuestionList();
 
             Bears = LoadBears();
@@ -46,7 +46,7 @@ namespace SangonBattle.Data
         private List<Bear> LoadBears()
         {
             var csvParser = new CsvParser<Bear>(_csvParserOptions, new CsvBearMapping());
-            var records = csvParser.ReadFromFile("bears.csv", Encoding.UTF8)
+            var records = csvParser.ReadFromFile("CSVDatas/bears.csv", Encoding.UTF8)
                                 .Select(x => x.Result)
                                 .ToList();
 
@@ -56,7 +56,7 @@ namespace SangonBattle.Data
         private List<Club> LoadClubs()
         {
             var csvParser = new CsvParser<Club>(_csvParserOptions, new CsvClubMapping());
-            var records = csvParser.ReadFromFile("clubs.csv", Encoding.UTF8)
+            var records = csvParser.ReadFromFile("CSVDatas/clubs.csv", Encoding.UTF8)
                                 .Select(x => x.Result)
                                 .ToList();
 
@@ -66,7 +66,7 @@ namespace SangonBattle.Data
         private List<BattleProgram> LoadPrograms()
         {
             var csvParser = new CsvParser<BattleProgram>(_csvParserOptions, new CsvProgramMapping());
-            var records = csvParser.ReadFromFile("programs.csv", Encoding.UTF8)
+            var records = csvParser.ReadFromFile("CSVDatas/programs.csv", Encoding.UTF8)
                                 .Select(x => x.Result)
                                 .ToList();
 
@@ -75,8 +75,9 @@ namespace SangonBattle.Data
 
         private void LoadSurveyResults()
         {
-            var csvParser = new CsvParser<SurveyResult>(_csvParserOptions, new CsvSurveyResultMapping(this));
-            var surveyResults = csvParser.ReadFromFile("surveyresults.csv", Encoding.UTF8)
+            var specialDelimOption = new CsvParserOptions(true, '|');
+            var csvParser = new CsvParser<SurveyResult>(specialDelimOption, new CsvSurveyResultMapping(this));
+            var surveyResults = csvParser.ReadFromFile("CSVDatas/surveyresults.csv", Encoding.UTF8)
                                 .Select(x => x.Result)
                                 .ToList();
 

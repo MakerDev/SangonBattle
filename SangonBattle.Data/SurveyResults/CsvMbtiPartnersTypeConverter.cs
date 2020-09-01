@@ -25,7 +25,9 @@ namespace SangonBattle.Data.SurveyResults
 
             foreach (var partner in partnerList)
             {
-                var mbtiResult = _staticContext.MbtiResults.FirstOrDefault(x => x != null && x.Mbti == partner) ?? new MbtiResult(partner);
+                //var mbtiResult = _staticContext.MbtiResults.FirstOrDefault(x => x != null && x.Mbti == partner) ?? new MbtiResult(partner);
+                //HACK : Because of Parallism issue!
+                var mbtiResult = new MbtiResult(partner);
 
                 result.Add(mbtiResult);
             }

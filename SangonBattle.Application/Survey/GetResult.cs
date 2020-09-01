@@ -24,7 +24,7 @@ namespace SangonBattle.Application.Survey
 
             public async Task<ISurveyResult> Handle(Query request, CancellationToken cancellationToken)
             {
-                var result = _staticContext.GetRandomResult();
+                var result = _staticContext.GetResult(request.ResultId);
 
                 return result;
             }

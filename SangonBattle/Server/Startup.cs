@@ -30,8 +30,7 @@ namespace SangonBattle.Server
                 {
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
                 });
-            services.AddRazorPages();
-            
+            services.AddRazorPages();            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

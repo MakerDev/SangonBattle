@@ -9,56 +9,63 @@
     height: 100%;
 }
 
-.h2 {
-    font-size: 8vw;
-}
-
-.h4 {
-    font-size: 4vw;
-}
-
-h2 {
-    font-size: 8vw;
-}
-
-h4 {
-    font-size: 4vw;
-}
-
-
-body {
+body {    
     font-size: 3.5vw;
 }
 
+.result-img {
+    width: 100%;
+    height: 100%;
+    max-width: 60vw;
+    border-radius: 10px;
+}
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 900px) {
     body {
         font-size: 30px;
     }
 }
 
+.carousel-item {
+    width: 52vw;
+    height: 52vw;
+    margin-top: 4vw;
+    margin-left: 4vw;
+}
 
 .carousel-item img {
-    max-width: 400px;
-    max-height: 400px;
-    width: 60vw;
-    height: 60vw;
+    width: inherit;
+    height: inherit;
 }
 
 .carousel-wrapper {
-    background-color: white;
-    border-radius: 10%;
-    max-width: 400px;
-    max-height: 400px;
+    background-color: transparent;
     width: 60vw;
     height: 60vw;
 }
+
+@media (min-width: 800px) 
+{
+    .carousel-item {
+        width: 600px;
+        height: 600px;
+        margin-top: 25px;
+        margin-left: 25px;
+    }
+
+    .carousel-wrapper {
+        width: 650px;
+        height: 650px;
+    }
+}
+
+
 
 .carousel, .slide,
 .carousel .carousel-inner,
 .carousel .carousel-item,
 .carousel .carousel-item img,
 .carousel .carousel-control {
-    border-radius: 10px;
+    border-radius: 8%;
     overflow: hidden;
 }

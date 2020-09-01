@@ -16,6 +16,7 @@ namespace SangonBattle.Data.SurveyResults
             MapProperty(4, x => x.SuggestedBear, new CsvBearTypeConverter(staticContext));
             MapProperty(5, x => x.BearDescription);
             MapProperty(6, x => x.ClubDesription);
+            MapProperty(7, x => x.SuggestedProgram, new CsvSuggestedProgramConverter(staticContext));
         }
     }
 }

@@ -54,8 +54,7 @@ namespace SangonBattle.Application.Survey
                 }
 
                 var mbtiResult = new MbtiResult(m, b, t, i);
-                var surveyResult = _staticContext.SurveyResults
-                    .Where(x => x.MbtiResult == mbtiResult).FirstOrDefault();
+                var surveyResult = _staticContext.SurveyResults.FirstOrDefault(x=>x.MbtiResult.Equals(mbtiResult));
 
                 //HACK : delete this
                 if (surveyResult == null)
