@@ -1,0 +1,42 @@
+﻿@inject IJSRuntime _jsRuntime
+
+<div class="d-flex justify-content-center">
+    <img class="@(_correct == null ? "" : "d-none")" src="/images/bigdata-bots/AmICorrect.png" style="width:82vw; height:41vw; border-radius:5%;" />
+    <img class="@(_correct !=null && _correct == false ? "" : "d-none")" src="/images/bigdata-bots/wrong.png" style="width:82vw; height:41vw; border-radius:5%;" />
+    <img class="@(_correct!=null && _correct == true ? "" : "d-none")" src="/images/bigdata-bots/correct.png" style="width:82vw; height:41vw; border-radius:5%;" />
+</div>
+
+<audio id="ggang_sound">
+    <source id="ggang_sound_source" src="/sounds/ggang.wav" />
+</audio>
+
+
+@if (_correct == null)
+{
+    <header>제가 당신의 성격을 맞췄나요?</header>
+
+    <br />
+    <button class="btn btn-success mx-2 btn-sm" @onclick="(async ()=> await OnClick(true))">네 맞아요!</button>
+    <button class="btn btn-danger btn-sm" @onclick="(async ()=> await OnClick(false))">아닌데요..?</button>
+}
+else
+{
+    @if (_correct == false)
+    {
+
+    }
+}
+
+@code {
+    private bool? _correct = null;
+
+    private async Task OnClick(bool isCorrect)
+    {
+        _correct = isCorrect;
+
+        if (_correct == false)
+        {
+            await _jsRuntime.InvokeVoidAsync("PlaySound");
+        }
+    }
+}

@@ -19,6 +19,13 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\bears\" />
+    <Folder Include="wwwroot\images\bigdata-bots\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\sounds\ggang.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

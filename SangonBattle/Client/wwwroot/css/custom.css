@@ -29,8 +29,8 @@ body {
 .carousel-item {
     width: 52vw;
     height: 52vw;
-    margin-top: 4vw;
-    margin-left: 4vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
 }
 
 .carousel-item img {
@@ -40,8 +40,8 @@ body {
 
 .carousel-wrapper {
     background-color: transparent;
-    width: 60vw;
-    height: 60vw;
+    width: 56vw;
+    height: 56vw;
 }
 
 @media (min-width: 800px) 

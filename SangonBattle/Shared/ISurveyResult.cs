@@ -19,7 +19,7 @@ namespace SangonBattle.Shared
         public string BearDescription { get; set; }
 
         public BattleProgram SuggestedProgram { get; set; }
-
+        public string ProgramDescription { get; set; }
         public List<Club> SuggestedClubs { get; set; }
         public string ClubDesription { get; set; }
     }

@@ -14,7 +14,7 @@ namespace SangonBattle.Shared
         public MbtiType T { get; set; }
         public MbtiType I { get; set; }
 
-        public string Mbti => (M.ToString() + B.ToString() + T.ToString() + I.ToString());
+
 
         /// <summary>
         /// This is for Json Deserialization
@@ -71,6 +71,11 @@ namespace SangonBattle.Shared
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return (M.ToString() + B.ToString() + T.ToString() + I.ToString());
         }
 
         public MbtiResult GetOpposite()

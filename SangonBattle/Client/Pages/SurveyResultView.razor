@@ -12,7 +12,7 @@
         }
         else
         {
-            <p>결과를 계산중입니다....</p>
+            <BigDataAnalyzing />
         }
     }
     else
@@ -27,15 +27,31 @@
                 &lt;@(_surveyResult.SuggestedBear.Name)&gt;
             </header>
 
-            <p class="mt-2">@(_surveyResult.BearDescription)</p>
+            <p class="my-2">@(_surveyResult.BearDescription)</p>
+
+            <header>
+                당신과 맥주를 마시기 좋은 친구 : @for (int i = 0; i < _surveyResult.MbtiPartners.Count; i++)
+                {
+                    @if (i == _surveyResult.MbtiPartners.Count - 1)
+                    {
+                        <span style="color:cadetblue">@_surveyResult.MbtiPartners[i].ToString() </span>
+                    }
+                    else
+                    {
+                        <span style="color:cadetblue">@_surveyResult.MbtiPartners[i].ToString(), </span>
+                    }
+                }
+            </header>
         </div>
 
         <div class="mt-5">
-            <header class="mt-5"><strong>당신과 어울리는 공상전 프로그램은?!</strong></header>
+            <header><strong>당신과 어울리는 공상전 프로그램은?!</strong></header>
 
-            <a class="align-self-center">
+            <a class="mt-4 align-self-center">
                 <img src="@($"/images/programs/p{_surveyResult.SuggestedProgram.Id}.png")" class="result-img" />
             </a>
+
+            <p class="mt-2">@(_surveyResult.ProgramDescription)</p>
         </div>
 
         <div class="mt-5">
@@ -56,13 +72,19 @@
             <p class="my-2">
                 공과대학의 동아리가 궁금하다면?
             </p>
-            <a class="btn btn-info" href="http://dongari.yonsei.ac.kr/sub/group_list.asp?d_type=2&dy_num=9">Click Here</a>
+            <a class="btn btn-info btn-sm" href="http://dongari.yonsei.ac.kr/sub/group_list.asp?d_type=2&dy_num=9">Click Here</a>
 
             <p class="my-2">
                 상경경영대학의 동아리가 궁금하다면?
             </p>
-            <a class="btn btn-info" href="http://dongari.yonsei.ac.kr/sub/group_list.asp?d_type=2&dy_num=14">Click Here</a>
+            <a class="btn btn-info btn-sm" href="http://dongari.yonsei.ac.kr/sub/group_list.asp?d_type=2&dy_num=14">Click Here</a>
 
+        </div>
+
+        <div>
+            <header class="mt-5 mb-3">---------Bonus---------</header>
+            <header><strong>당신의 MBTI는 @(_surveyResult.MbtiResult.ToString())입니다</strong></header>
+            <TheBigDataOne />
         </div>
 
         <button type="button" class="btn btn-primary my-4"
@@ -85,7 +107,7 @@
     {
         _surveyResult = await _surveyRepository.GetResult(ResultId);
 
-        await Task.Delay(1000);
+        await Task.Delay(2000);
 
         if (_surveyResult == null)
         {
