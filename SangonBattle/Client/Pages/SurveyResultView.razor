@@ -2,6 +2,7 @@
 
 @inject SurveyRepository _surveyRepository
 @inject NavigationManager _navigationManager
+
 <div class="container text-center">
 
     @if (_surveyResult == null)
@@ -21,7 +22,7 @@
             <header class="font-weight-bold">당신과 어울리는 맥주는?!</header>
 
             <div class="row justify-content-center">
-                <BooteStarpCarousel ContentPictures="_bearPictures" DisplayArrows="true" />
+                <BooteStarpCarousel ContentPictures="_bearPictures" Captions="_bearCaptions" DisplayArrows="true"/>
             </div>
             <header class="mt-2 font-weight-bold" style="color: #BADA55;">
                 &lt;@(_surveyResult.SuggestedBear.Name)&gt;
@@ -101,7 +102,7 @@
     private bool _resultNotFound = false;
 
     private List<string> _bearPictures = new List<string>();
-
+    private List<string> _bearCaptions = new List<string>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -120,7 +121,9 @@
             //TODO : optimize this
             var bearName = _surveyResult.SuggestedBear.Name.Replace(" ", String.Empty);
             var pictureName = bearPicture.Replace(" ", String.Empty);
+
             _bearPictures.Add($"/images/bears/{bearName}/{pictureName}.png");
+            _bearCaptions.Add(bearPicture);
         }
     }
 

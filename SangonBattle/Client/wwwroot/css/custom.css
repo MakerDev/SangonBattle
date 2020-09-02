@@ -3,6 +3,11 @@
     width: 25vw;
 }
 
+.text-stroke {
+    color: black;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 .main-logo {
     padding: 0px;
     width: 100%;
